@@ -17,11 +17,21 @@ function QuizCreator(){
   };
 
   const handleStartDateChange = (event) => {
-    setStartDate(event.target.value);
+    const selectedDate = new Date(event.target.value); // Get the selected date from the input
+    const selectedDateIST = selectedDate.toLocaleString('en-US', {
+    timeZone: 'Asia/Kolkata',
+    hour12: false, // Use 24-hour format
+    });
+    setStartDate(selectedDateIST);
   };
 
   const handleEndDateChange = (event) => {
-    setEndDate(event.target.value);
+    const selectedDate = new Date(event.target.value); // Get the selected date from the input
+    const selectedDateIST = selectedDate.toLocaleString('en-US', {
+    timeZone: 'Asia/Kolkata',
+    hour12: false, // Use 24-hour format
+    });
+    setEndDate(selectedDateIST);
   };
 
   const handleQuestionChange = (event, index) => {

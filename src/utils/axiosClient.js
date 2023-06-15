@@ -20,12 +20,12 @@ axiosClient.interceptors.response.use(
         const data=response.data;
         if(data.statusCode===500){
             console.log("Invalid server error: ",data);
-            window.location.replace('/error','_self');
+            // window.location.replace('/error','_self');
         }
         return data;
     },
     (e)=>{
         console.log("Inside axiosClient catch-> ",e.message);
-        window.location.replace('/error','_self');
+        // window.location.replace('/error','_self');
     }
 )

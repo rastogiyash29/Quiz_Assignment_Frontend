@@ -17,21 +17,11 @@ function QuizCreator(){
   };
 
   const handleStartDateChange = (event) => {
-    const selectedDate = new Date(event.target.value); // Get the selected date from the input
-    const selectedDateIST = selectedDate.toLocaleString('en-US', {
-    timeZone: 'Asia/Kolkata',
-    hour12: false, // Use 24-hour format
-    });
-    setStartDate(selectedDateIST);
+    setStartDate(event.target.value);
   };
 
   const handleEndDateChange = (event) => {
-    const selectedDate = new Date(event.target.value); // Get the selected date from the input
-    const selectedDateIST = selectedDate.toLocaleString('en-US', {
-    timeZone: 'Asia/Kolkata',
-    hour12: false, // Use 24-hour format
-    });
-    setEndDate(selectedDateIST);
+    setEndDate(event.target.value);
   };
 
   const handleQuestionChange = (event, index) => {
@@ -79,10 +69,15 @@ function QuizCreator(){
       endDate,
       questions,
     };
+
     // Send quizData to the server
     if(!validateQuiz(quizData)){
       showAlert("Invalid Quiz Submission fill all details");
     }
+
+    quizData.startDate=new Date(startDate).toISOString();
+    
+    quizData.endDate=new Date(endDate).toISOString();
 
     const quizJson=JSON.stringify(quizData)
     const data=await axiosClient.post('quizzes/',{quiz:quizJson});

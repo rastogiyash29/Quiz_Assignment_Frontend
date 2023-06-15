@@ -25,6 +25,7 @@ function QuizResult(){
       }else{
         setProgress('some error occured reload the page');
         showAlert(data?.result)
+        console.log(data);
       }
     }
 

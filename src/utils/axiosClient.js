@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const base_url='http://localhost:4001';
+const base_url="https://quizomania-backend.onrender.com";
+// const base_url='http://localhost:4001';
 
 export const axiosClient=axios.create({
     baseURL: base_url,
